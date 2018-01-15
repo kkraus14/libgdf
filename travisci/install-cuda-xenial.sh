@@ -9,15 +9,15 @@
 # 'source' this script, rather than executing it in a sub-process.
 #
 set -e
-sudo apt-get install -y wget
+apt-get install -y wget
 wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1604_${CUDA}_amd64.deb
-sudo dpkg -i cuda-repo-ubuntu1604_${CUDA}_amd64.deb
-sudo apt-get update -qq
+dpkg -i cuda-repo-ubuntu1604_${CUDA}_amd64.deb
+apt-get update -qq
 export CUDA_APT=${CUDA:0:3}
 export CUDA_APT=${CUDA_APT/./-}
 # sudo apt-get install -y cuda-drivers cuda-core-${CUDA_APT} cuda-cudart-dev-${CUDA_APT} cuda-cufft-dev-${CUDA_APT}
-sudo apt-get install -y cuda-drivers cuda-core-${CUDA_APT} cuda-cudart-dev-${CUDA_APT}
-sudo apt-get clean
+apt-get install -y cuda-drivers cuda-core-${CUDA_APT} cuda-cudart-dev-${CUDA_APT}
+apt-get clean
 export CUDA_HOME=/usr/local/cuda-${CUDA:0:3}
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 export PATH=${CUDA_HOME}/bin:${PATH}
