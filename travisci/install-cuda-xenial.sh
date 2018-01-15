@@ -17,7 +17,7 @@ apt-get update -qq
 export CUDA_APT=${CUDA:0:3}
 export CUDA_APT=${CUDA_APT/./-}
 # sudo apt-get install -y cuda-drivers cuda-core-${CUDA_APT} cuda-cudart-dev-${CUDA_APT} cuda-cufft-dev-${CUDA_APT}
-apt-get install -y cuda-drivers cuda-core-${CUDA_APT} cuda-cudart-dev-${CUDA_APT}
+apt-get install -yq cuda-drivers cuda-core-${CUDA_APT} cuda-cudart-dev-${CUDA_APT}
 apt-get clean
 export CUDA_HOME=/usr/local/cuda-${CUDA:0:3}
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
