@@ -33,20 +33,20 @@ before_install:
 install:
   # check
   - conda install conda-build anaconda-client --yes
-  - docker exec -t ubuntu-build bash -c "export PATH=$HOME/miniconda3/bin:$PATH;
+  - docker exec -t ubuntu-build bash -c 'export PATH=$HOME/miniconda3/bin:$PATH;
     nvcc --version;
     conda --version;
-    conda install conda-build anaconda-client --yes
+    conda install conda-build anaconda-client --yes'
 
 script:
   # build ligdf
-  - docker exec -t ubuntu-build bash -c "cd /travis; 
+  - 'docker exec -t ubuntu-build bash -c "cd /travis; 
   export CUDA=${CUDA} BUILD_CFFI=${BUILD_CFFI} PYTHON=${PYTHON};
-  source ./travisci/build_libgdf.sh"
+  source ./travisci/build_libgdf.sh"'
   # build libgdf_cffi
-  - docker exec -t ubuntu-build bash -c "cd /travis;
+  - 'docker exec -t ubuntu-build bash -c "cd /travis;
   export CUDA=${CUDA} BUILD_CFFI=${BUILD_CFFI} PYTHON=${PYTHON};
-  source ./travisci/build_libgdf_cffi.sh"
+  source ./travisci/build_libgdf_cffi.sh"'
 
 after_success:
   - source ./travisci/upload.sh
