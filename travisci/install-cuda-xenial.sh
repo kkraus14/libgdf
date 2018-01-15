@@ -9,6 +9,7 @@
 # 'source' this script, rather than executing it in a sub-process.
 #
 set -e
+sudo apt-get install -y wget
 wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1604_${CUDA}_amd64.deb
 sudo dpkg -i cuda-repo-ubuntu1604_${CUDA}_amd64.deb
 sudo apt-get update -qq
