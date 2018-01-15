@@ -11,7 +11,7 @@
 set -e
 apt-get update -qq
 apt-get install -y wget
-wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1604_${CUDA}_amd64.deb
+wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_${CUDA}_amd64.deb
 dpkg -i cuda-repo-ubuntu1604_${CUDA}_amd64.deb
 apt-get update -qq
 export CUDA_APT=${CUDA:0:3}

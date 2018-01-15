@@ -25,7 +25,8 @@ before_install:
   - ./miniconda.sh -b
   - export PATH=$HOME/miniconda3/bin:$PATH
   # And inside container
-  - docker exec -t ubuntu-build bash -c "cd /travis; 
+  - docker exec -t ubuntu-build bash -c "cd /travis;
+    export CUDA=${CUDA};
     source ./travisci/install-cuda-xenial.sh;
     ./miniconda.sh -b"
 
@@ -39,9 +40,13 @@ install:
 
 script:
   # build ligdf
-  - docker exec -t ubuntu-build bash -c "cd /travis; source ./travisci/build_libgdf.sh"
+  - docker exec -t ubuntu-build bash -c "cd /travis; 
+  export CUDA=${CUDA} BUILD_CFFI=${BUILD_CFFI} PYTHON=${PYTHON};
+  source ./travisci/build_libgdf.sh"
   # build libgdf_cffi
-  - docker exec -t ubuntu-build bash -c "cd /travis; source ./travisci/build_libgdf_cffi.sh"
+  - docker exec -t ubuntu-build bash -c "cd /travis;
+  export CUDA=${CUDA} BUILD_CFFI=${BUILD_CFFI} PYTHON=${PYTHON};
+  source ./travisci/build_libgdf_cffi.sh"
 
 after_success:
   - source ./travisci/upload.sh
