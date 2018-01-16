@@ -45,10 +45,18 @@ script:
   # build ligdf
   - 'docker exec -t ubuntu-build bash -c "cd /travis; 
   export CUDA=${CUDA} BUILD_CFFI=${BUILD_CFFI} PYTHON=${PYTHON};
+  export PATH=$HOME/miniconda3/bin:$PATH;
+  export CUDA_HOME=/usr/local/cuda-${CUDA:0:3};
+  export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH};
+  export PATH=${CUDA_HOME}/bin:${PATH};
   source ./travisci/build_libgdf.sh"'
   # build libgdf_cffi
   - 'docker exec -t ubuntu-build bash -c "cd /travis;
   export CUDA=${CUDA} BUILD_CFFI=${BUILD_CFFI} PYTHON=${PYTHON};
+  export PATH=$HOME/miniconda3/bin:$PATH;
+  export CUDA_HOME=/usr/local/cuda-${CUDA:0:3};
+  export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH};
+  export PATH=${CUDA_HOME}/bin:${PATH};
   source ./travisci/build_libgdf_cffi.sh"'
 
 after_success:
