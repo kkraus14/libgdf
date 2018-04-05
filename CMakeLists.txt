@@ -25,7 +25,6 @@ cuda_add_library(gdf SHARED
     src/column.cpp
     src/errorhandling.cpp
     src/unaryops.cu
-    src/ipc.cu
     src/reductions.cu
     src/sorting.cu
     src/joining.cu
@@ -33,7 +32,7 @@ cuda_add_library(gdf SHARED
     src/segmented_sorting.cu
 )
 
-target_link_libraries(gdf arrow)
+target_link_libraries(gdf)
 
 # Command to symlink files into the build directory
 

@@ -29,10 +29,6 @@ typedef struct gdf_column_{
     gdf_dtype dtype;
 } gdf_column;
 
-struct _OpaqueIpcParser;
-typedef struct _OpaqueIpcParser gdf_ipc_parser_type;
-
-
 struct _OpaqueRadixsortPlan;
 typedef struct _OpaqueRadixsortPlan gdf_radixsort_plan_type;
 

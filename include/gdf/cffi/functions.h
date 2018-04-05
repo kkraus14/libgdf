@@ -12,22 +12,6 @@ const char * gdf_error_get_name(gdf_error errcode);
 
 /* ipc */
 
-gdf_ipc_parser_type* gdf_ipc_parser_open(const uint8_t *schema, size_t length);
-void gdf_ipc_parser_open_recordbatches(gdf_ipc_parser_type *handle,
-                                       const uint8_t *recordbatches,
-                                       size_t length);
-
-void gdf_ipc_parser_close(gdf_ipc_parser_type *handle);
-int gdf_ipc_parser_failed(gdf_ipc_parser_type *handle);
-const char* gdf_ipc_parser_to_json(gdf_ipc_parser_type *handle);
-const char* gdf_ipc_parser_get_error(gdf_ipc_parser_type *handle);
-const void* gdf_ipc_parser_get_data(gdf_ipc_parser_type *handle);
-int64_t gdf_ipc_parser_get_data_offset(gdf_ipc_parser_type *handle);
-
-const char *gdf_ipc_parser_get_schema_json(gdf_ipc_parser_type *handle) ;
-const char *gdf_ipc_parser_get_layout_json(gdf_ipc_parser_type *handle) ;
-
-
 /* sorting */
 gdf_radixsort_plan_type* gdf_radixsort_plan(size_t num_items, int descending,
                                         unsigned begin_bit, unsigned end_bit);
