@@ -36,8 +36,19 @@ message(STATUS "Using C++ standard: c++${CMAKE_CXX_STANDARD}")
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules/" ${CMAKE_MODULE_PATH})
 message(STATUS "CMAKE_MODULE_PATH:" "${CMAKE_MODULE_PATH}")
 
+# specify the cross compilers
+set(CMAKE_C_COMPILER $ENV{CC})
+set(CMAKE_CXX_COMPILER $ENV{CXX})
+
+# where is the target environment
 set(CMAKE_FIND_ROOT_PATH $ENV{PREFIX} $ENV{BUILD_PREFIX}/$ENV{HOST}/sysroot)
 message(STATUS "CMAKE_ROOT_PATH": "${CMAKE_FIND_ROOT_PATH}")
+
+# search for programs in the build host directories
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+# for libraries and headers in the target directories
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 IF(CMAKE_COMPILER_IS_GNUCXX)
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
@@ -52,8 +63,6 @@ include(CTest)
 # Include custom modules (see cmake directory)
 include(ConfigureGoogleTest)
 include(ConfigureArrow)
-
-find_package(Threads)
 
 find_package(CUDA)
 set_package_properties(
@@ -158,8 +167,6 @@ if (ARROW_NUMERIC_VERSION EQUAL 900)
 else()
   target_link_libraries(gdf arrow)
 endif()
-
-target_link_libraries(gdf ${CMAKE_THREAD_LIBS_INIT})
 
 # Command to symlink files into the build directory
 add_custom_command(  # link the include directory
