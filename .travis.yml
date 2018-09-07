@@ -36,9 +36,11 @@ install:
   - nvcc --version
   - conda --version
   # install conda build
-  - conda install gcc_linux-64=5.4.0 conda-build anaconda-client conda-verify --yes
+  - conda install gcc_linux-64=7.2.0 conda-build anaconda-client conda-verify --yes
 
 script:
+  # Activate root environment for gcc 7.2.0
+  - source activate root
   # build ligdf
   - source ./travisci/build_libgdf.sh
   # build libgdf_cffi
