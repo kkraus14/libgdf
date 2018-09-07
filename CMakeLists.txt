@@ -47,6 +47,8 @@ include(CTest)
 include(ConfigureGoogleTest)
 include(ConfigureArrow)
 
+find_package(Threads)
+
 find_package(CUDA)
 set_package_properties(
     CUDA PROPERTIES TYPE REQUIRED
@@ -150,6 +152,8 @@ if (ARROW_NUMERIC_VERSION EQUAL 900)
 else()
   target_link_libraries(gdf arrow)
 endif()
+
+target_link_libraries(gdf ${CMAKE_THREAD_LIBS_INIT})
 
 # Command to symlink files into the build directory
 add_custom_command(  # link the include directory
