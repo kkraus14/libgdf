@@ -27,11 +27,17 @@ PROJECT(libgdf)
 
 cmake_minimum_required(VERSION 2.8)  # not sure about version required
 
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_PLATFORM Linux)
+
 set(CMAKE_CXX_STANDARD 11)
 message(STATUS "Using C++ standard: c++${CMAKE_CXX_STANDARD}")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules/" ${CMAKE_MODULE_PATH})
 message(STATUS "CMAKE_MODULE_PATH:" "${CMAKE_MODULE_PATH}")
+
+set(CMAKE_FIND_ROOT_PATH $ENV{PREFIX} $ENV{BUILD_PREFIX}/$ENV{HOST}/sysroot)
+message(STATUS "CMAKE_ROOT_PATH": "${CMAKE_FIND_ROOT_PATH}")
 
 IF(CMAKE_COMPILER_IS_GNUCXX)
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
