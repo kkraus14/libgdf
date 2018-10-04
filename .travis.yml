@@ -29,7 +29,7 @@ before_install:
   - export PATH=$HOME/miniconda3/bin:$PATH
   # install libboost
   - sudo apt-get update
-  - sudo apt-get install -y libboost-all-dev
+  - sudo apt-get install -y libboost-all-dev libpthread-stubs0-dev
 
 install:
   # check
