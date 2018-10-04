@@ -25,7 +25,7 @@
 
 PROJECT(libgdf)
 
-cmake_minimum_required(VERSION 2.8)  # not sure about version required
+cmake_minimum_required(VERSION 3.12)  # not sure about version required
 
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_PLATFORM Linux)
