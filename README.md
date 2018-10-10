@@ -1,3 +1,5 @@
+# `PyGDF` and `LibGDF` are in the process of being deprecated and consolidated into `cuDF` as part of NVIDIA RAPIDS. Check out the announcement at https://rapids.ai.
+
 # libgdf: GPU Dataframes
 
 [![Build Status](http://18.191.94.64/buildStatus/icon?job=libgdf-master)](http://18.191.94.64/job/libgdf-master/)
