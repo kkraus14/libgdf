@@ -29,7 +29,8 @@ matrix:
     
 
 before_install:
-  - eval "CC=gcc-5 && CXX=g++-5"
+  - export CC=gcc-5 
+  - export CXX=g++-5
   - source ./travisci/install-cuda-trusty.sh
   # install miniconda
   - travis_retry wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
