@@ -21,16 +21,15 @@ matrix:
           packages:
             - g++-5
       env:
-         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-    - env: CUDA=9.0.176_384.81
-    - env: CUDA=9.1.85_387.26
-    - env: CUDA=9.2.148_396.37
-    - env: CUDA=9.2.148_396.37 BUILD_CFFI=1 PYTHON=3.6
-    - env: CUDA=9.2.148_396.37 BUILD_CFFI=1 PYTHON=3.5
+        - CUDA=9.0.176_384.81
+        - CUDA=9.1.85_387.26
+        - CUDA=9.2.148_396.37
+        - CUDA=9.2.148_396.37 BUILD_CFFI=1 PYTHON=3.6
+        - CUDA=9.2.148_396.37 BUILD_CFFI=1 PYTHON=3.5
     
 
 before_install:
-  - eval "${MATRIX_EVAL}"
+  - eval "CC=gcc-5 && CXX=g++-5"
   - source ./travisci/install-cuda-trusty.sh
   # install miniconda
   - travis_retry wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
@@ -49,7 +48,7 @@ install:
   - conda install conda-build anaconda-client conda-verify cmake --yes
 
 script:
-  # Activate root environment for gcc 5.4.0 and g++ 5.4.0
+  # Activate root environment for cmake
   - source activate root
   # check conda versions
   - conda list
