@@ -36,10 +36,10 @@ install:
   - nvcc --version
   - conda --version
   # install conda build
-  - conda install gcc_linux-64=7.2.0 gxx_linux-64=7.2.0 conda-build anaconda-client conda-verify cmake --yes
+  - conda install gcc_linux-64=5.4.0 gxx_linux-64=5.4.0 conda-build anaconda-client conda-verify cmake --yes
 
 script:
-  # Activate root environment for gcc 7.2.0 and g++ 7.2.0
+  # Activate root environment for gcc 5.4.0 and g++ 5.4.0
   - source activate root
   # check conda versions
   - conda list
