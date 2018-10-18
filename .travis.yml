@@ -45,7 +45,7 @@ install:
   - g++ --version
   - nvcc --version
   - conda --version
-  # install conda build
+  # install conda build and cmake
   - conda install conda-build anaconda-client conda-verify cmake --yes
 
 script:
