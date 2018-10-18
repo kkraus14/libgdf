@@ -42,6 +42,8 @@ before_install:
 
 install:
   # check
+  - gcc --version
+  - g++ --version
   - nvcc --version
   - conda --version
   # install conda build
